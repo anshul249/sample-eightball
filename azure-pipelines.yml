@@ -1,6 +1,7 @@
-- task: NexusIqPipelineTask@1
+- task: InstallFortifySCA@7
   inputs:
-    nexusIqService: 'nexus1'
-    applicationId: '12'
-    stage: 'Build'
-    ignoreSystemError: true
+    InstallerPath: 'C:\Users\Administrator\Desktop\Installer\Fortify_SCA_and_Apps_20.1.1_windows_x64.exe'
+    VS2017: true
+    VS2019: true
+    LicenseFile: 'C:\Users\Administrator\Desktop\DevSecOpsLicense\fortify.license'
+    RunFortifyRulepackUpdate: true
