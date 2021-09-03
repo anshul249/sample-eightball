@@ -1,23 +1,28 @@
-name: anything
-jobs:
-- job: intall
-  steps:
-- task: InstallFortifySCA@7
+trigger:
+- master
+pool: Default
+
+steps:
+- task: fortifyvsts.hpe-security-fortify-vsts.build-task-fortify-sca-install.InstallFortifySCA@7
+  displayName: 'Install Fortify SCA on agent'
   inputs:
     InstallerPath: 'C:\Users\Administrator\Desktop\Installer\Fortify_SCA_and_Apps_20.1.1_windows_x64.exe'
-    VS2017: true
+    VS2015: false
     VS2019: true
     LicenseFile: 'C:\Users\Administrator\Desktop\DevSecOpsLicense\fortify.license'
-    RunFortifyRulepackUpdate: true
-- task: FortifySCA@7
+steps:
+- task: fortifyvsts.hpe-security-fortify-vsts.build-task-fortify-sca.FortifySCA@7
+  displayName: 'Run Fortify on Agent1'
   inputs:
     licenseFile: 'C:\Users\Administrator\Desktop\DevSecOpsLicense\fortify.license'
-    runBuildTranslate: true
-    applicationType: 'java'
-    fortifyBuildId: 'Sample8ball'
-    runFortifyRulepackUpdate: true
-    runFortifyClean: true
+    applicationType: java
+    buildClasspath: 'C:\Program Files\Java\jdk1.8.0_291'
+    buildToolOptions: 'C:\apache-maven-3.8.1'
+    fortifySourceTranslate: '*'
+    fortifyBuildId: Firstsca1
     scaVerbose: true
-    scaDebug: false
+    scaDebug: true
     runFortifyScan: true
     fortifyScanType: 'LocalScan'
+  continueOnError: true
+  condition: succeededOrFailed()
