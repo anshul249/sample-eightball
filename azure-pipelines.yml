@@ -10,7 +10,7 @@ steps:
     VS2015: false
     VS2019: true
     LicenseFile: 'C:\Users\Administrator\Desktop\DevSecOpsLicense\fortify.license'
-steps:
+
 - task: fortifyvsts.hpe-security-fortify-vsts.build-task-fortify-sca.FortifySCA@7
   displayName: 'Run Fortify on Agent1'
   inputs:
