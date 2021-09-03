@@ -1,3 +1,7 @@
+name: anything
+jobs:
+- job: intall
+  steps:
 - task: InstallFortifySCA@7
   inputs:
     InstallerPath: 'C:\Users\Administrator\Desktop\Installer\Fortify_SCA_and_Apps_20.1.1_windows_x64.exe'
