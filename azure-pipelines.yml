@@ -5,3 +5,15 @@
     VS2019: true
     LicenseFile: 'C:\Users\Administrator\Desktop\DevSecOpsLicense\fortify.license'
     RunFortifyRulepackUpdate: true
+- task: FortifySCA@7
+  inputs:
+    licenseFile: 'C:\Users\Administrator\Desktop\DevSecOpsLicense\fortify.license'
+    runBuildTranslate: true
+    applicationType: 'java'
+    fortifyBuildId: 'Sample8ball'
+    runFortifyRulepackUpdate: true
+    runFortifyClean: true
+    scaVerbose: true
+    scaDebug: false
+    runFortifyScan: true
+    fortifyScanType: 'LocalScan'
